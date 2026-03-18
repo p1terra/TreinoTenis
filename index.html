@@ -10,8 +10,22 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body { font-family: system-ui, -apple-system, sans-serif; }
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Estilo customizado para a barra de rolagem das semanas */
+        .week-scrollbar::-webkit-scrollbar {
+            height: 6px;
+        }
+        .week-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9; 
+            border-radius: 8px;
+        }
+        .week-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 8px;
+        }
+        .week-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 pb-12">
@@ -209,8 +223,8 @@
                             </div>
                         </div>
                         
-                        <!-- Month/Week Selector -->
-                        <div class="flex bg-slate-100 p-1 rounded-lg overflow-x-auto hide-scrollbar w-full sm:w-auto">
+                        <!-- Month/Week Selector with Custom Scrollbar -->
+                        <div class="flex bg-slate-100 p-1 pb-2 rounded-lg overflow-x-auto week-scrollbar w-full sm:w-auto">
                             ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(m => `
                                 <button onclick="setMonth(${m})" class="whitespace-nowrap flex-shrink-0 px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${activeMonth === m ? 'bg-white shadow-sm text-emerald-600' : 'text-slate-500 hover:text-slate-700'}">
                                     Semana ${m}
